@@ -1,17 +1,36 @@
 
+let boton = document.getElementById("boton")
+
+boton.addEventListener("click", registroPersonas)
+function registroPersonas(){
+    let name = document.getElementById("Name")
+    let surname = document.getElementById("Surname")
+    let password = document.getElementById("Password")
+    let email = document.getElementById("Email")
+    let nombre = name.value;
+    let apellido = surname.value;
+    let contraseña = password.value;
+    let mail = email.value;
+    let nueva_Persona = new Personas(nombre , apellido , contraseña, mail);
+    lista_Personas.push( nueva_Persona);    
+}
+
 class Personas{
-    constructor(nombre,apellido,dni,deuda){
+    constructor(nombre,apellido,contraseña,mail){
 
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = dni;
-        this.deuda = deuda;
+        this.contraseña = contraseña;
+        this.mail = mail;
     }
 }
 
 let lista_Personas = [];
 
-for( let i = 0 ; i < 2 ; i++){
+console.log(lista_Personas)
+
+////
+/* for( let i = 0 ; i < 2 ; i++){
 
     let nombre = prompt("Ingrese su nombre");
     let apellido = prompt("ingrese su apellido");
@@ -53,3 +72,4 @@ const deuda_filtrado = lista_Personas.filter ((el) => el.deuda > 10000)
 console.log(buscar_nombre)
 
 console.log( deuda_filtrado );
+*/
