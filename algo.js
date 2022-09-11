@@ -1,35 +1,47 @@
+const $btnSignIn= document.querySelector('.sign-in-btn'),
+      $btnSignUp = document.querySelector('.sign-up-btn'),  
+      $signUp = document.querySelector('.sign-up'),
+      $signIn  = document.querySelector('.sign-in');
 
-let boton = document.getElementById("boton")
+document.addEventListener('click', e => {
+    if (e.target === $btnSignIn || e.target === $btnSignUp) {
+        $signIn.classList.toggle('active');
+        $signUp.classList.toggle('active')
+    }
+});
 
-boton.addEventListener("click", registroPersonas)
+
+
+const $btnSignUpData = document.getElementById("btn-data"),
+      $name = document.getElementById("Name"),
+      $password = document.getElementById("Password"),
+      $email = document.getElementById("Email");
+
+$btnSignUpData.addEventListener("click", registroPersonas)
 function registroPersonas(){
-    let name = document.getElementById("Name")
-    let surname = document.getElementById("Surname")
-    let password = document.getElementById("Password")
-    let email = document.getElementById("Email")
-    let nombre = name.value;
-    let apellido = surname.value;
-    let contraseña = password.value;
-    let mail = email.value;
-    let nueva_Persona = new Personas(nombre , apellido , contraseña, mail);
-    lista_Personas.push( nueva_Persona);    
-}
+    let nombre = $name.value;
+    let contraseña = $password.value;
+    let mail = $email.value;
+    let nueva_Persona = new Personas(nombre , contraseña, mail);
+    lista_Personas.push( nueva_Persona);  
+    $signIn.classList.toggle('active');  
+    $signUp.classList.toggle('active')
+};
 
 class Personas{
-    constructor(nombre,apellido,contraseña,mail){
+    constructor(nombre,contraseña,mail){
 
         this.nombre = nombre;
-        this.apellido = apellido;
         this.contraseña = contraseña;
         this.mail = mail;
     }
 }
 
 let lista_Personas = [];
+let lista_Personas_JSON = JSON.stringify(lista_Personas)
+localStorage.setItem("Usuarios" , lista_Personas_JSON);   
 
-console.log(lista_Personas)
 
-////
 /* for( let i = 0 ; i < 2 ; i++){
 
     let nombre = prompt("Ingrese su nombre");
