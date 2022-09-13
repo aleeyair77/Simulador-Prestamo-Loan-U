@@ -8,8 +8,8 @@ const $btnSignIn = document.querySelector('.sign-in-btn'),
     $email = document.getElementById("Email"),
     $imputEmail = document.getElementById("imput-email"),
     $imputContraseña = document.getElementById("imput-contraseña"),
-    $btnInicioSesion = document.getElementById("btn-inicio-sesion");
-
+    $btnInicioSesion = document.getElementById("btn-inicio-sesion"),
+    $error = document.getElementById("error");
 
 class Usuario {
     constructor(nombre, contraseña, mail) {
@@ -55,7 +55,6 @@ $btnSignUpData.addEventListener("click", (e) => {
                 if (us == user.mail && ps == user.contraseña) {
                     alert("Acceso correcto");
                     window.location.href = "prestamo.html";
-                    localStorage.setItem("usuario", user.mail)
                 } else {
                     error.innerHTML = "<p> Acceso incorrecto, intente nuevamente</p>"
                 }
