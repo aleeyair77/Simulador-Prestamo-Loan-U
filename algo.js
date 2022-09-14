@@ -32,7 +32,7 @@ document.addEventListener('click', e => {
 
 $btnSignUpData.addEventListener("click", (e) => {
             e.preventDefault();
-            if ($name.value != "" && $password.value != "" && $email.value !="") {
+            if ($name.value != "" && $password.value != "" && $email.value != "") {
                 let nuevoUsuario = new Usuario($name.value, $password.value, $email.value);
                 lista_Usuarios.push(nuevoUsuario);
                 let lista_Usuarios_JSON = JSON.stringify(lista_Usuarios);
@@ -41,11 +41,11 @@ $btnSignUpData.addEventListener("click", (e) => {
                 $signIn.classList.toggle('active');
                 $signUp.classList.toggle('active');
             } 
+        }
         });
 
         let lista_Usuarios_Parse = JSON.parse(localStorage.getItem("Usuarios"))
-
-
+        console.log(lista_Usuarios_Parse)
         $btnInicioSesion.addEventListener("click", (e) => {
             e.preventDefault();
             let us = $imputEmail.value;
