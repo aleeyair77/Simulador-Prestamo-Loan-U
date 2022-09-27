@@ -63,9 +63,9 @@ $btnInicioSesion.addEventListener("click", (e) => {
     let ps = $imputContraseña.value;
 
     for (let user of lista_Usuarios_Parse) {
-        if (us == user.mail && ps == user.contraseña){         
-               window.location.href = "prestamo.html";}
-         else {
+        if (us == user.mail && ps == user.contraseña) {
+            window.location.href = "prestamo.html";
+        } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Usuario incorrecto',
