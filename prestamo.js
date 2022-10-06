@@ -1,18 +1,14 @@
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
-let searchBtn = document.querySelector(".bx-search");
-let listadoDolar = document.getElementById("listado")
-
+let listadoDolar = document.getElementById("listado");
+let imputPrestamo = document.getElementById("montoPrestamo");
+let botonPrestamo = document.getElementById("aceptarPrestamo");
 
 closeBtn.addEventListener("click", ()=>{
   sidebar.classList.toggle("open");
   menuBtnChange();//calling the function(optional)
 });
 
-searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-  sidebar.classList.toggle("open");
-  menuBtnChange(); //calling the function(optional)
-});
 
 // following are the code to change sidebar button(optional)
 function menuBtnChange() {
@@ -23,4 +19,10 @@ function menuBtnChange() {
  }
 }
 
-  
+botonPrestamo.addEventListener("click", (e) =>{
+    e.preventDefault();
+    if(imputPrestamo.value != 0 && imputPrestamo.value < 70000){
+        imputPrestamo.remove();
+        botonPrestamo.remove();
+    }
+}) 

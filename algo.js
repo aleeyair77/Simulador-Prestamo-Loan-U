@@ -12,11 +12,12 @@ const $btnSignIn = document.querySelector('.sign-in-btn'),
     $error = document.getElementById("error");
 
 class Usuario {
-    constructor(nombre, contraseña, mail) {
+    constructor(nombre, contraseña, mail, deuda) {
 
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.mail = mail;
+        this.deuda = deuda;
     }
 }
 
@@ -36,7 +37,7 @@ $signUp.classList.add('bounce');
 $btnSignUpData.addEventListener("click", (e) => {
     e.preventDefault();
     if ($name.value != "" && $password.value != "" && $email.value != "") {
-        let nuevoUsuario = new Usuario($name.value, $password.value, $email.value);
+        let nuevoUsuario = new Usuario($name.value, $password.value, $email.value, 0);
         lista_Usuarios.push(nuevoUsuario);
         let lista_Usuarios_JSON = JSON.stringify(lista_Usuarios);
         localStorage.setItem("Usuarios", lista_Usuarios_JSON);
@@ -64,7 +65,7 @@ $btnInicioSesion.addEventListener("click", (e) => {
 
     for (let user of lista_Usuarios_Parse) {
         if (us == user.mail && ps == user.contraseña) {
-            window.location.href = "prestamo.html";
+            window.location.href = "loan.html";
         } else {
             Swal.fire({
                 icon: 'error',
