@@ -8,16 +8,24 @@ let botonPrestamo = document.getElementById("aceptarPrestamo");
 let divCuotas = document.getElementById("divCuotas")
 let containerPrestamo = document.getElementById("container-solicitar-prestamo");
 
+let montoSolicitado = imputPrestamo.value;
+
 const cuotas = [{id: 1,
-cuota: "uno"},
+cuota: "una",
+interes: "3%"},
 {id: 2,
-cuota: "tres"},
+cuota: "tres",
+interes: "5%"},
 {id: 3,
-  cuota: "seis"},
+  cuota: "seis"
+  ,
+  interes: "7%"},
   {id: 4,
-    cuota: "nueve"},
+    cuota: "nueve",
+    interes: "10%"},
     {id: 5,
-      cuota: "doce"}];
+      cuota: "doce",
+      interes: "15%"}];
 
       console.log(cuotas)
 
@@ -40,16 +48,16 @@ function menuBtnChange() {
 botonPrestamo.addEventListener("click", (e)=>{
   e.preventDefault();
     solicitandoPrestamo();
-    cuotasPrestamo();
+    cuotasPrestamo()
     });
 
 
 function solicitandoPrestamo() {
   if(imputPrestamo.value != 0 && imputPrestamo.value < 70000){
-    let montoSolcitado = imputPrestamo.value;
     containerPrestamo.remove();
+    let montoSolicitado = imputPrestamo.value;
     Swal.fire({
-      title: '¿Estas seguro de solicitar el monto por: ' + montoSolcitado + '?',
+      title: '¿Estas seguro de solicitar el monto por: ' + montoSolicitado + '?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -65,7 +73,11 @@ function solicitandoPrestamo() {
       }
     })
 };
-}
+let montoSolicitado = imputPrestamo.value;
+return montoSolicitado;
+};
+
+console.log(solicitandoPrestamo())
 
 function cuotasPrestamo(){
   cuotas.forEach(function(cuota){
@@ -74,29 +86,46 @@ function cuotasPrestamo(){
     btnCuota.classList.add("btn-outline-primary")
     btnCuota.textContent = 'Pagar en ' + cuota.cuota + ' cuotas';
     divCuotas.appendChild(btnCuota)
-  })
-  
-}
+    btnCuota.addEventListener("click", ()=>{
+      if(cuota.id == "1"){
+        let prestamoCuotaUno = porcentajeUno(parseFloat(solicitandoPrestamo()))
+        Swal.fire({
+          title: '¿Estas seguro de solicitar el monto por: ' + prestamoCuotaUno + '?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar monto'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              '¡Confirmado!',
+              'ahora seleccione sus cuotas',
+              'success'
+            )
+          }
+        })
+      }
+    });
+})
+};
 
-// function (){
-//   if (cuotasPrestamo == 1){
-//     let porcenaje_uno = (((montoSolcitado * 3)/ 100) + montoSolcitado);
-//     return porcenaje_uno;
-//   }
-//   else if (cuotas_prestamo == 3){
-//   let porcentaje_tres = (((montoSolcitado * 5) / 100) + montoSolcitado);
-//   return porcentaje_tres;
-//   }
-//   else if (cuotas_prestamo == 6){
-//       let porcentaje_seis = (((montoSolcitado * 7) / 100) + montoSolcitado);
-//       return porcentaje_seis; 
-//   }
-//   else if (cuotas_prestamo == 9){
-//       let porcentaje_nueve = (((montoSolcitado * 10) / 100) + prmontoSolcitado);
-//       return porcentaje_nueve;
-//   }
-//   else if (cuotas_prestamo == 12){
-//       let porcentaje_doce = (((montoSolcitado * 15) / 100) + montoSolcitado);
-//       return porcentaje_doce;
-//   }
-// };
+function porcentajeUno(numero) {
+  let cincoPorciento = (((numero * 5) / 100) + numero);
+  return cincoPorciento;}
+
+  function porcentajeTres(numero) {
+    (((numero * 10) / 100) + numero);
+    return porcentajeTres;}
+
+    function porcentajeSeis(numero) {
+      (((numero * 20) / 100) + numero);
+      return porcentajeSeis;}
+
+      function porcentajeNueve(numero) {
+        (((numero * 30) / 100) + numero);
+        return porcentajeNueve;}
+
+        function porcentajeDoce(numero) {
+          (((numero * 50) / 100) + numero);
+          return porcentajeDoces;}
