@@ -9,6 +9,8 @@ let divCuotas = document.getElementById("divCuotas")
 let containerPrestamo = document.getElementById("container-solicitar-prestamo");
 
 let montoSolicitado = imputPrestamo.value;
+let lista_Usuarios_Parse = JSON.parse(localStorage.getItem("Usuarios"));
+
 
 const cuotas = [{id: 1,
 cuota: "una",
@@ -77,7 +79,6 @@ let montoSolicitado = imputPrestamo.value;
 return montoSolicitado;
 };
 
-console.log(solicitandoPrestamo())
 
 function cuotasPrestamo(){
   cuotas.forEach(function(cuota){
@@ -100,9 +101,140 @@ function cuotasPrestamo(){
           if (result.isConfirmed) {
             Swal.fire(
               '¡Confirmado!',
-              'ahora seleccione sus cuotas',
+              'Prestamo Solicitado',
               'success'
             )
+            const UsuarioActulizadoPrestamo = lista_Usuarios_Parse.map((el)=>{
+              return {
+                nombre: el.nombre,
+                contraseña: el.contraseña,
+                mail: el.mail,
+                deuda: el.deuda + prestamoCuotaUno,
+              }
+            })
+            let UsuarioActulizadoPrestamoJson = JSON.stringify(UsuarioActulizadoPrestamo);
+            localStorage.setItem("Usuarios", UsuarioActulizadoPrestamoJson);
+            window.location.href = "loan.html";
+          }
+        })
+      }
+      else if(cuota.id == "2"){
+        let prestamoCuotaTres = porcentajeTres(parseFloat(solicitandoPrestamo()))
+        Swal.fire({
+          title: '¿Estas seguro de solicitar el monto por: ' + prestamoCuotaTres + '?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar monto'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              '¡Confirmado!',
+              'Prestamo Solicitado',
+              'success'
+            )
+            const UsuarioActulizadoPrestamo = lista_Usuarios_Parse.map((el)=>{
+              return {
+                nombre: el.nombre,
+                contraseña: el.contraseña,
+                mail: el.mail,
+                deuda: el.deuda + prestamoCuotaTres,
+              }
+            })
+            let UsuarioActulizadoPrestamoJson = JSON.stringify(UsuarioActulizadoPrestamo);
+            localStorage.setItem("Usuarios", UsuarioActulizadoPrestamoJson);
+            window.location.href = "loan.html";
+          }
+        })
+      }
+      else if(cuota.id == "3"){
+        let prestamoCuotaSeis = porcentajeSeis(parseFloat(solicitandoPrestamo()))
+        Swal.fire({
+          title: '¿Estas seguro de solicitar el monto por: ' + prestamoCuotaSeis + '?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar monto'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              '¡Confirmado!',
+              'Prestamo Solicitado',
+              'success'
+            )
+            const UsuarioActulizadoPrestamo = lista_Usuarios_Parse.map((el)=>{
+              return {
+                nombre: el.nombre,
+                contraseña: el.contraseña,
+                mail: el.mail,
+                deuda: el.deuda + prestamoCuotaSeis,
+              }
+            })
+            let UsuarioActulizadoPrestamoJson = JSON.stringify(UsuarioActulizadoPrestamo);
+            localStorage.setItem("Usuarios", UsuarioActulizadoPrestamoJson);
+            window.location.href = "loan.html";
+          }
+        })
+      }
+      else if(cuota.id == "4"){
+        let prestamoCuotaNueve = porcentajeNueve(parseFloat(solicitandoPrestamo()))
+        Swal.fire({
+          title: '¿Estas seguro de solicitar el monto por: ' + prestamoCuotaNueve + '?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar monto'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              '¡Confirmado!',
+              'Prestamo Solicitado',
+              'success'
+            )
+            const UsuarioActulizadoPrestamo = lista_Usuarios_Parse.map((el)=>{
+              return {
+                nombre: el.nombre,
+                contraseña: el.contraseña,
+                mail: el.mail,
+                deuda: el.deuda + prestamoCuotaNueve,
+              }
+            })
+            let UsuarioActulizadoPrestamoJson = JSON.stringify(UsuarioActulizadoPrestamo);
+            localStorage.setItem("Usuarios", UsuarioActulizadoPrestamoJson);
+            window.location.href = "loan.html";
+          }
+        })
+      }
+      else if(cuota.id == "5"){
+        let prestamoCuotaDoce = porcentajeDoce(parseFloat(solicitandoPrestamo()))
+        Swal.fire({
+          title: '¿Estas seguro de solicitar el monto por: ' + prestamoCuotaDoce + '?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar monto'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              '¡Confirmado!',
+              'Prestamo Solicitado',
+              'success'
+            )
+            const UsuarioActulizadoPrestamo = lista_Usuarios_Parse.map((el)=>{
+              return {
+                nombre: el.nombre,
+                contraseña: el.contraseña,
+                mail: el.mail,
+                deuda: el.deuda + prestamoCuotaDoce,
+              }
+            })
+            let UsuarioActulizadoPrestamoJson = JSON.stringify(UsuarioActulizadoPrestamo);
+            localStorage.setItem("Usuarios", UsuarioActulizadoPrestamoJson);
+            window.location.href = "loan.html";
           }
         })
       }
@@ -115,17 +247,19 @@ function porcentajeUno(numero) {
   return cincoPorciento;}
 
   function porcentajeTres(numero) {
-    (((numero * 10) / 100) + numero);
-    return porcentajeTres;}
+    let tresPorciento = (((numero * 10) / 100) + numero);
+    return tresPorciento;}
 
     function porcentajeSeis(numero) {
-      (((numero * 20) / 100) + numero);
-      return porcentajeSeis;}
+      let seisPorciento = (((numero * 20) / 100) + numero);
+      return seisPorciento;}
 
       function porcentajeNueve(numero) {
-        (((numero * 30) / 100) + numero);
-        return porcentajeNueve;}
+      let nuevePorciento =  (((numero * 30) / 100) + numero);
+        return nuevePorciento;}
 
         function porcentajeDoce(numero) {
-          (((numero * 50) / 100) + numero);
-          return porcentajeDoces;}
+        let docePorciento =  (((numero * 50) / 100) + numero);
+          return docePorciento;}
+
+
