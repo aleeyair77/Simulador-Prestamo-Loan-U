@@ -65,6 +65,9 @@ $btnInicioSesion.addEventListener("click", (e) => {
 
     for (let user of lista_Usuarios_Parse) {
         if (us == user.mail && ps == user.contraseña) {
+            let UsuarioActivo = $imputEmail.value;
+            let UsuarioActivoJson = JSON.stringify(UsuarioActivo)
+            localStorage.setItem("Usuario Activo", UsuarioActivoJson)
             window.location.href = "loan.html";
         } else {
             Swal.fire({

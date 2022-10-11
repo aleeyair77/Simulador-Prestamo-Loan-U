@@ -10,6 +10,7 @@ let containerPrestamo = document.getElementById("container-solicitar-prestamo");
 
 let montoSolicitado = imputPrestamo.value;
 let lista_Usuarios_Parse = JSON.parse(localStorage.getItem("Usuarios"));
+let listaUsuarioActivoParse = JSON.parse(localStorage.getItem("Usuario Activo"));
 
 
 const cuotas = [{id: 1,
@@ -104,7 +105,10 @@ function cuotasPrestamo(){
               'Prestamo Solicitado',
               'success'
             )
-            const UsuarioActulizadoPrestamo = lista_Usuarios_Parse.map((el)=>{
+            let confirmacionUsuario = lista_Usuarios_Parse.find((el) => el.mail == listaUsuarioActivoParse);
+            let UsuariosNuevos = lista_Usuarios_Parse.filter(el => el.mail !== listaUsuarioActivoParse)
+            let deudaConfirmacionUsuario = [confirmacionUsuario]
+            const UsuarioActulizadoPrestamo = deudaConfirmacionUsuario.map((el)=>{
               return {
                 nombre: el.nombre,
                 contraseña: el.contraseña,
@@ -112,8 +116,10 @@ function cuotasPrestamo(){
                 deuda: el.deuda + prestamoCuotaUno,
               }
             })
-            let UsuarioActulizadoPrestamoJson = JSON.stringify(UsuarioActulizadoPrestamo);
-            localStorage.setItem("Usuarios", UsuarioActulizadoPrestamoJson);
+            let usuarioActualizadoObjeto = UsuarioActulizadoPrestamo.find((el) => el.mail == listaUsuarioActivoParse);
+            UsuariosNuevos.push(usuarioActualizadoObjeto);
+            let usuariosNuevosParse = JSON.stringify(UsuariosNuevos);
+            localStorage.setItem("Usuarios", usuariosNuevosParse);
             window.location.href = "loan.html";
           }
         })
@@ -261,5 +267,3 @@ function porcentajeUno(numero) {
         function porcentajeDoce(numero) {
         let docePorciento =  (((numero * 50) / 100) + numero);
           return docePorciento;}
-
-
