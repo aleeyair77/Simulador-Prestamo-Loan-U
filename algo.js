@@ -12,12 +12,17 @@ const $btnSignIn = document.querySelector('.sign-in-btn'),
     $error = document.getElementById("error");
 
 class Usuario {
-    constructor(nombre, contraseña, mail, deuda) {
+    constructor(nombre, contraseña, mail, deuda, deudaUnaCuota, deudaTresCuotas, deudaSeisCuotas, deudaNueveCuotas, deudaDoceCuotas) {
 
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.mail = mail;
         this.deuda = deuda;
+        this.deudaUnaCuota = deudaUnaCuota;
+        this.deudaTresCuotas = deudaTresCuotas;
+        this.deudaSeisCuotas = deudaSeisCuotas;
+        this.deudaNueveCuotas = deudaNueveCuotas;
+        this.deudaDoceCuotas = deudaDoceCuotas;
     }
 }
 
@@ -37,7 +42,7 @@ $signUp.classList.add('bounce');
 $btnSignUpData.addEventListener("click", (e) => {
     e.preventDefault();
     if ($name.value != "" && $password.value != "" && $email.value != "") {
-        let nuevoUsuario = new Usuario($name.value, $password.value, $email.value, 0);
+        let nuevoUsuario = new Usuario($name.value, $password.value, $email.value, 0, 0, 0, 0, 0, 0);
         lista_Usuarios.push(nuevoUsuario);
         let lista_Usuarios_JSON = JSON.stringify(lista_Usuarios);
         localStorage.setItem("Usuarios", lista_Usuarios_JSON);
