@@ -7,11 +7,14 @@ let imputPrestamo = document.getElementById("montoPrestamo");
 let botonPrestamo = document.getElementById("aceptarPrestamo");
 let divCuotas = document.getElementById("divCuotas")
 let containerPrestamo = document.getElementById("container-solicitar-prestamo");
+let montoPorAceptar = document.getElementById("montoPorAceptar")
+
+
+
 
 let montoSolicitado = imputPrestamo.value;
 let lista_Usuarios_Parse = JSON.parse(localStorage.getItem("Usuarios"));
 let listaUsuarioActivoParse = JSON.parse(localStorage.getItem("Usuario Activo"));
-
 
 const cuotas = [{id: 1,
 cuota: "una",
@@ -51,9 +54,16 @@ function menuBtnChange() {
 botonPrestamo.addEventListener("click", (e)=>{
   e.preventDefault();
     solicitandoPrestamo();
+    mostrarMontoSolicitado();
     cuotasPrestamo()
     });
 
+function mostrarMontoSolicitado(){
+  const confirmarMonto = document.createElement("h1")
+  confirmarMonto.classList.add("text-center")
+  confirmarMonto.textContent = 'En cuantas cuotas desea pagar el monto de ' + imputPrestamo.value;
+  montoPorAceptar.appendChild(confirmarMonto)
+}
 
 function solicitandoPrestamo() {
   if(imputPrestamo.value != 0 && imputPrestamo.value < 70000){
@@ -86,7 +96,7 @@ function cuotasPrestamo(){
     const btnCuota = document.createElement("button");
     btnCuota.classList.add("btn")
     btnCuota.classList.add("btn-outline-primary")
-    btnCuota.textContent = 'Pagar en ' + cuota.cuota + ' cuotas';
+    btnCuota.textContent = 'Pagar en ' + cuota.cuota + ' cuota/s';
     divCuotas.appendChild(btnCuota)
     btnCuota.addEventListener("click", ()=>{
       if(cuota.id == "1"){

@@ -1,7 +1,9 @@
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
-let listadoDolar = document.getElementById("listado")
+let listadoDolar = document.getElementById("listado");
+let presentacionUsuarioActivo = document.getElementById("usuarioActivo");
+let muestraDeuda = document.getElementById("muestraDeuda");
 
 
 closeBtn.addEventListener("click", ()=>{
@@ -18,4 +20,10 @@ function menuBtnChange() {
  }
 }
 
-  
+let lista_Usuarios_Parse = JSON.parse(localStorage.getItem("Usuarios"));
+let listaUsuarioActivoParse = JSON.parse(localStorage.getItem("Usuario Activo"));
+
+let usuarioActivoMuestra = lista_Usuarios_Parse.find((el) => el.mail == listaUsuarioActivoParse);
+presentacionUsuarioActivo.innerHTML = usuarioActivoMuestra.nombre;
+console.log(usuarioActivoMuestra.deuda)
+muestraDeuda.innerHTML = usuarioActivoMuestra.deuda;
