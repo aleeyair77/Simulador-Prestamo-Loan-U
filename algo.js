@@ -12,7 +12,7 @@ const $btnSignIn = document.querySelector('.sign-in-btn'),
     $error = document.getElementById("error");
 
 class Usuario {
-    constructor(nombre, contraseña, mail, deuda, deudaUnaCuota, deudaTresCuotas, deudaSeisCuotas, deudaNueveCuotas, deudaDoceCuotas) {
+    constructor(nombre, contraseña, mail, deuda, deudaUnaCuota, deudaTresCuotas, deudaSeisCuotas, deudaNueveCuotas) {
 
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -22,7 +22,6 @@ class Usuario {
         this.deudaTresCuotas = deudaTresCuotas;
         this.deudaSeisCuotas = deudaSeisCuotas;
         this.deudaNueveCuotas = deudaNueveCuotas;
-        this.deudaDoceCuotas = deudaDoceCuotas;
     }
 }
 

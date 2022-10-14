@@ -6,6 +6,10 @@
   box-sizing: border-box !important;
   font-family: "Poppins" , sans-serif;
 }
+body{
+  height: 100vw;
+  width: 100vw;
+}
 .sidebar{
   position: fixed;
   left: 0;
@@ -252,4 +256,36 @@
 
 #columnaUno{
   margin-left: 10px !important;
+}
+
+
+#deudaEnPrestamo{
+  border: 10px solid !important;
+  border-image: repeating-linear-gradient(
+    30deg, #7B26B6, #130038 150px) 1 !important;
+}
+
+#deudaEnPrestamo:hover{
+  border-image: repeating-linear-gradient(
+    30deg, #7B26B6, #130038 75px) 1 !important;
+}
+
+#cotizaciones{
+  z-index: 3;
+  position: absolute;
+}
+
+#listado{
+  font-size: 10px;
+}
+
+#columnaUno{
+  margin-left: 10px !important;
+}
+
+#divCadaDeuda div{
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 8px #d0d0d0;
 }
