@@ -5,11 +5,15 @@
   padding: 0 !important;
   box-sizing: border-box !important;
   font-family: "Poppins" , sans-serif;
+
 }
-body{
-  height: 100vw;
+
+.seccionPagoDeuda{
+  height: 100vh;
   width: 100vw;
+  background-color: #E4E9F7;
 }
+
 .sidebar{
   position: fixed;
   left: 0;
@@ -260,15 +264,13 @@ body{
 
 
 #deudaEnPrestamo{
-  border: 10px solid !important;
-  border-image: repeating-linear-gradient(
-    30deg, #7B26B6, #130038 150px) 1 !important;
+  background: #E4E9F7;
+overflow: hidden;
+border-radius: 20px;
+box-shadow: 0 0 10px 1px black;;
 }
 
-#deudaEnPrestamo:hover{
-  border-image: repeating-linear-gradient(
-    30deg, #7B26B6, #130038 75px) 1 !important;
-}
+
 
 #cotizaciones{
   z-index: 3;
@@ -283,9 +285,25 @@ body{
   margin-left: 10px !important;
 }
 
+#divCadaDeuda{
+  padding-left: 200px !important;
+  padding-right: 20px !important;
+}
 #divCadaDeuda div{
-  background: #f2f2f2;
+  height: 120px !important;
+  width: 300px !important;
+  margin-left: 100px !important;
+  background: #E4E9F7;
+overflow: hidden;
+border-radius: 20px;
+box-shadow: 0 0 10px 1px black;
+}
+
+#rowDeudaMaxima{
+  height: 110px !important;
+  width: 500px !important;
+  background: #E4E9F7;
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 0 0 20px 8px #d0d0d0;
+  box-shadow: 0 0 10px 1px black;
 }

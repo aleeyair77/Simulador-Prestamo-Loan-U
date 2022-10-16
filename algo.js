@@ -11,6 +11,8 @@ const $btnSignIn = document.querySelector('.sign-in-btn'),
     $btnInicioSesion = document.getElementById("btn-inicio-sesion"),
     $error = document.getElementById("error");
 
+    let lista_Usuarios_Parse = JSON.parse(localStorage.getItem("Usuarios"));
+
 class Usuario {
     constructor(nombre, contraseña, mail, deuda, deudaUnaCuota, deudaTresCuotas, deudaSeisCuotas, deudaNueveCuotas) {
 
@@ -24,6 +26,7 @@ class Usuario {
         this.deudaNueveCuotas = deudaNueveCuotas;
     }
 }
+
 
 let lista_Usuarios = [];
 console.log(lista_Usuarios)
@@ -58,10 +61,9 @@ $btnSignUpData.addEventListener("click", (e) => {
         $signIn.classList.toggle('active');
         $signUp.classList.toggle('active');
     }
+
 });
 
-let lista_Usuarios_Parse = JSON.parse(localStorage.getItem("Usuarios"))
-console.log(lista_Usuarios_Parse)
 $btnInicioSesion.addEventListener("click", (e) => {
     e.preventDefault();
     let us = $imputEmail.value;
@@ -88,7 +90,10 @@ $btnInicioSesion.addEventListener("click", (e) => {
     }
 })
 
-
+/* else if($email.value = mailsUsuarios){
+        $email.style.borderColor = "red";
+    } 
+let mailsUsuarios = lista_Usuarios_Parse.map((el) => el.mail ); */
 
 /* for( let i = 0 ; i < 2 ; i++){
 
@@ -144,4 +149,5 @@ function registroPersonas(){
     $signIn.classList.toggle('active');  
     $signUp.classList.toggle('active');
 };
+
 */

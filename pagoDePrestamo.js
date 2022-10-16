@@ -84,6 +84,7 @@ function creandoDivsCuotas() {
         const montoDeudaTexto = document.createElement("h5");
         montoDeuda.classList.add("col-6");
         montoDeuda.classList.add("p-3");
+        montoDeuda.classList.add("g-4");
         montoDeuda.setAttribute('id', 'divPagoDeDeudaPorCuotas');
         montoDeudaTexto.textContent = 'Deuda generada en ' + deuda.cuota + ' cuota/s: ' + deuda.deuda;
         const btnCuotaDeuda = document.createElement("button");
